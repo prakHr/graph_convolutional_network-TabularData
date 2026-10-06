@@ -1,0 +1,7 @@
+bertopic==0.17.4
+huggingface_hub==1.32.0
+mandala-gnn==0.1.0
+mpire==2.10.2
+numpy==2.2.6
+pandas==2.3.3
+transformers==5.17.0
