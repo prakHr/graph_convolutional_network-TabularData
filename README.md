@@ -4,7 +4,7 @@
 python get_model_details.py
 ```
 
-## Demo 1
+## Demo 
 <img width="1916" height="1017" alt="image" src="https://github.com/user-attachments/assets/e4a274a2-9b93-4bcd-a4e0-9fcef4f6a79c" />
 
 <br>
