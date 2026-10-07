@@ -63,6 +63,6 @@ if __name__=="__main__":
     X = np.random.randn(4,8)
     y = np.array([0,0,1,1])
     epochs = 2
-    threshold = 0.1
+    threshold = 0.91
     results = get_graph_details(X,y,epochs,threshold)
     pprint(results)
