@@ -33,9 +33,8 @@ def construct_adjacency_list(X,threshold):
     num_cores = max(multiprocessing.cpu_count()//2,1)
     with WorkerPool(n_jobs=num_cores,daemon=False) as pool:
         results = pool.map(get_similar_values, results, progress_bar=False)
-    for i in range(len(results)):
-        from_node = i
-        to_nodes_list = list(list(results[i])[0])
+    for from_node in range(len(results)):
+        to_nodes_list = list(list(results[from_node])[0])
         for to_node in to_nodes_list:        
             adjacency_list[from_node][to_node] = 1
             adjacency_list[to_node][from_node] = 1
