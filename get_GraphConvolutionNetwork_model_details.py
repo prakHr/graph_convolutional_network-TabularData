@@ -40,7 +40,6 @@ def construct_adjacency_list(X,threshold):
             adjacency_list[from_node][to_node] = 1
             adjacency_list[to_node][from_node] = 1
             adjacency_list[to_node][to_node] = 0
-            adjacency_list[from_node][from_node] = 0
         adjacency_list[from_node][from_node] = 0
     return adjacency_list
 
