@@ -62,7 +62,7 @@ def get_graph_details(X,y,epochs,threshold):
 if __name__=="__main__":
     X = np.random.randn(4,8)
     y = np.array([0,0,1,1])
-    epochs = 2
-    threshold = 0.91
+    epochs = 100000
+    threshold = 0.001
     results = get_graph_details(X,y,epochs,threshold)
     pprint(results)
