@@ -45,12 +45,12 @@ def construct_adjacency_list(X,threshold):
 
     
 def get_graph_details(X,y,epochs,threshold):
-    num_features,num_samples = X.shape[0],X.shape[1]
+    num_samples,num_features = X.shape[0],X.shape[1]
     n_classes = len(list(set(list(y))))
     adj_list = construct_adjacency_list(X,threshold)
     adj_list = np.array(adj_list)
     hidden_lambda_dimensions = 5
-    graph_convolutional_network = GCN(in_features = num_samples, hidden = hidden_lambda_dimensions*num_samples, n_classes=n_classes)
+    graph_convolutional_network = GCN(in_features = num_features, hidden = hidden_lambda_dimensions*num_features, n_classes=n_classes)
     graph_convolutional_network.fit(adj_list,X,y,epochs=epochs)
     return {
         "graph_convolutional_network":graph_convolutional_network,
