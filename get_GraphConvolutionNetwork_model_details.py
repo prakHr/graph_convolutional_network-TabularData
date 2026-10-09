@@ -20,42 +20,42 @@ def get_similar_values(X,smallX,threshold):
 
 def construct_adjacency_list(X,threshold):
     results = []
-    A = []
+    adjacency_list = []
     for smallX in X:
         my_dict = {
             "X":X,
             "smallX":smallX,
             "threshold":threshold
         }
-        l = [0 for i in range(X.shape[0])]
-        A.append(l)
+        zero_filled_list = [0 for i in range(X.shape[0])]
+        adjacency_list.append(zero_filled_list)
         results.append(my_dict)
     num_cores = max(multiprocessing.cpu_count()//2,1)
     with WorkerPool(n_jobs=num_cores,daemon=False) as pool:
         results = pool.map(get_similar_values, results, progress_bar=False)
     for i in range(len(results)):
-        u = i
-        vD = list(list(results[i])[0])
-        for v in vD:        
-            A[u][v] = 1
-            A[v][u] = 1
-            A[v][v] = 0
-            A[u][u] = 0
-    return A
+        from_node = i
+        to_nodes_list = list(list(results[i])[0])
+        for to_node in to_nodes_list:        
+            adjacency_list[from_node][to_node] = 1
+            adjacency_list[to_node][from_node] = 1
+            adjacency_list[to_node][to_node] = 0
+            adjacency_list[from_node][from_node] = 0
+    return adjacency_list
 
     
 def get_graph_details(X,y,epochs,threshold):
-    N,D = X.shape[0],X.shape[1]
-    x = len(list(set(list(y))))
-    A = construct_adjacency_list(X,threshold)
-    A = np.array(A)
-    gcn = GCN(in_features = D, hidden = 2*D, n_classes=x)
-    gcn.fit(A,X,y,epochs=epochs)
+    num_features,num_samples = X.shape[0],X.shape[1]
+    n_classes = len(list(set(list(y))))
+    adj_list = construct_adjacency_list(X,threshold)
+    adj_list = np.array(adj_list)
+    graph_convolutional_network = GCN(in_features = num_samples, hidden = 2*num_samples, n_classes=n_classes)
+    graph_convolutional_network.fit(adj_list,X,y,epochs=epochs)
     return {
-        "graph_convolutional_network":gcn,
+        "graph_convolutional_network":graph_convolutional_network,
         "threshold":threshold,
         "epochs":epochs,
-        "A":A
+        "A":adj_list
     }    
 
 
