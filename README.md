@@ -24,3 +24,15 @@ python get_model_details.py
 <br>
 
 <img width="1916" height="1017" alt="image" src="https://github.com/user-attachments/assets/c2cfe44a-46bf-4df0-8fa0-4f7bf75e7025" />
+
+<br>
+<br>
+<br>
+
+```
+python create_crystals.py
+```
+## Demo 
+<img width="717" height="500" alt="image" src="https://github.com/user-attachments/assets/d3b1a78f-1f4d-4515-a00d-647116bd5d2e" />
+
+
