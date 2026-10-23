@@ -93,14 +93,14 @@ def create_fig(fig):
 def create_main_crystals(num_of_crystals,Type):
     fig = create_crystals(num_of_crystals, 0.3, Type)
     if fig!=None:
-        return fig
-    return False
+        return True,fig
+    return False,None
     
 
 if __name__ == "__main__":    
-    num_of_crystals = 15
+    num_of_crystals = 3
     Type = "3d"
-    fig = create_main_crystals(num_of_crystals,Type)
-    if fig!=False:
+    check,fig = create_main_crystals(num_of_crystals,Type)
+    if check==True:
         fig.show()
     
