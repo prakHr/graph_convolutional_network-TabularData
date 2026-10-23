@@ -45,7 +45,7 @@ def create_crystals(num_of_crystals,opacity,Type):
     N = 3
     if Type=="3d":
         N = 5
-    progress_bar = False
+    progress_bar = True
     rows = rows
     cols = rows
     specs_list = []
@@ -74,7 +74,7 @@ def create_crystals(num_of_crystals,opacity,Type):
             "opacity":opacity,
         }
         results.append(my_dict)
-    num_cores = max(multiprocessing.cpu_count()//2,1)
+    num_cores = max(multiprocessing.cpu_count()-1,1)
     with WorkerPool(n_jobs=num_cores,daemon=False) as pool:
         results = pool.map(get_graphs, results, progress_bar=progress_bar)
     fig.add_traces(results)
@@ -90,17 +90,18 @@ def create_crystals(num_of_crystals,opacity,Type):
 def create_fig(fig):
     fig.show()
 
-def create_main_crystals(num_of_crystals,Type):
-    fig = create_crystals(num_of_crystals, 0.3, Type)
+def create_main_crystals(num_of_crystals,opacity,Type):
+    fig = create_crystals(num_of_crystals, opacity, Type)
     if fig!=None:
         return True,fig
     return False,None
     
 
 if __name__ == "__main__":    
-    num_of_crystals = 3
+    num_of_crystals = 5
     Type = "3d"
-    check,fig = create_main_crystals(num_of_crystals,Type)
+    opacity = 1
+    check,fig = create_main_crystals(num_of_crystals,opacity,Type)
     if check==True:
         fig.show()
     
