@@ -33,6 +33,6 @@ python get_model_details.py
 python create_crystals.py
 ```
 ## Demo 
-<img width="717" height="500" alt="image" src="https://github.com/user-attachments/assets/d3b1a78f-1f4d-4515-a00d-647116bd5d2e" />
+<img width="1916" height="2017" alt="image" src="https://github.com/user-attachments/assets/d3b1a78f-1f4d-4515-a00d-647116bd5d2e" />
 
 
